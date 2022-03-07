@@ -3,10 +3,11 @@ package com.mikhalevich.concurrent;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ConcurrentMap {
     public static void main(String[] args) throws InterruptedException {
-        Map<Integer, String> map = new HashMap<Integer, String>();
+        Map<Integer, String> map = new ConcurrentHashMap<Integer, String>();
         map.put(1, "One");
         map.put(2, "Two");
         map.put(3, "Three");
