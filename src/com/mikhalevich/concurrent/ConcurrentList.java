@@ -15,6 +15,11 @@ public class ConcurrentList {
         list.add("Fedor");
         System.out.println(list);
 
+        /**
+         * Перед тем как начать итерировать коллекцию
+         * итератору передалось состояние коллекции на момент инициализации итератора
+         *
+         */
         Runnable runnable1 = () -> {
             Iterator<String> iterator = list.iterator();
             while(iterator.hasNext()){
@@ -27,6 +32,15 @@ public class ConcurrentList {
             }
         };
 
+        /**
+         * Операция list.remove создает новую копию коллекции
+         * Операция list.add создает ещё одну копию коллекции
+         * Процесс создания копии ресурсоёмкий поэтому используем
+         * CopyOnWriteArrayList когда:
+         * Мало операций по изменению элементов
+         * Много операций чтения элементов
+         *
+         */
         Runnable runnable2 = () -> {
                 try {
                     Thread.sleep(200);
