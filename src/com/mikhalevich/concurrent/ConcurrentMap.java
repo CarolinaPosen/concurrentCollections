@@ -15,6 +15,14 @@ public class ConcurrentMap {
         map.put(5, "Five");
         System.out.println(map);
 
+        /**
+         * Любое количество потоков может читать из ConcurrentHashMap;
+         * Несколько потоков могут удалять/изменять/добавлять
+         * одновременно элементы в разные бакеты но не в один и тот же
+         * Бакет Лочится - BucketLocking
+         * key & value не может быть null
+         */
+
         Runnable runnable1 = () -> {
             Iterator<Integer> iterator = map.keySet().iterator();
             while (iterator.hasNext()){
